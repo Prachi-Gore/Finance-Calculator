@@ -1,8 +1,9 @@
 library(shinydashboard)
+
 img_src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRuU0JfGtSbccNad2h-fQ9mO8hOelb9YunoIqna38iFxA&usqp=CAU&ec=48665701";
 
 
-ui_ = fluidPage(
+ui_= fluidPage(
   # tags$head(
   #   tags$link(
   #     rel = "stylesheet", type = "text/css", href = "styles.css"
@@ -35,7 +36,7 @@ ui_ = fluidPage(
                             choices = list("Present Value" = 1,
                                            "Future Value" = 2,
                                            "EMI" = 3),
-                            selected = 3),
+                            selected = 1),
     
   # Create input fields for variables
   uiOutput("dynamic_ui")),

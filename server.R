@@ -13,10 +13,10 @@ sub_ui=function(output_label){tags$div(selectInput(inputId = "payable", label = 
                                        numericInput("rate", "Interest rate", value = 0.05, min = 0, max = 1, step = 0.01),
                                        numericInput("nper", "Number of periods", value = 5, min = 1, max = , step = 1),
                                        numericInput("pmt", "Amount", value = 0, min = 0, max = , step = 1),
-                                       
+
                                        # Create a button to calculate the present value and accumulated value
-                                       
-                                       
+
+
                                        useShinyjs(),
                                        actionButton(style="background-color:#3BB143;color:white;",
                                                     onmouseover = "this.style.backgroundColor='#C7EA46'; this.style.color='black';",
@@ -29,8 +29,8 @@ sub_ui=function(output_label){tags$div(selectInput(inputId = "payable", label = 
                                                 tags$i(class = "fa-solid fa-rupee-sign fa-beat ",style="margin-top:5px;"),
                                                 style="margin-top:20px;display:none;")
                                        #verbatimTextOutput(value)
-                                       
-                                       
+
+
 )}
 server=function(input,output,session){
   
