@@ -1,3 +1,4 @@
+library(shinydashboard)
 img_src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRuU0JfGtSbccNad2h-fQ9mO8hOelb9YunoIqna38iFxA&usqp=CAU&ec=48665701";
 
 
@@ -80,8 +81,6 @@ ui = dashboardPage(skin = "green",
         font-size: 18px;
       }
       
-      
-        
       "
     )
   )
