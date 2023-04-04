@@ -1,5 +1,6 @@
 # Finance Calculator made with shiny 
 
+<p>This Finance Calculator has feature of calculating Present Value, Future Value,Annuity/Series Of Payments/EMI <p>
 <h3>Tech Stack Used</h3>
  <ul>
  <li>R</li>
