@@ -55,7 +55,7 @@ ui_= fluidPage(
   ))
 
 header = dashboardHeader(
-  title = "Finance Calculator",
+  title = "Actuarial Statistics",
   tags$li(class="dropdown",tags$a(href="https://github.com/Prachi-Gore",icon("github"),"github",target="_blank")),
   tags$li(class="dropdown",tags$a(href="https://www.linkedin.com/in/prachi-gore-4772a11a5",icon("linkedin"),"LinkedIn",target="_blank")),
   tags$li(class="dropdown",tags$a(href="https://www.hackerrank.com/prachi_gore",icon("hackerrank"),"HackerRank",target="_blank"))
