@@ -12,7 +12,7 @@ effective_rate = function(nom_rate, m) {
 sub_ui=function(output_label){tags$div(selectInput(inputId = "payable", label = "Interest Payable : ", choices = c("Yearly", "Half Yearly", "Monthly")),
                                        numericInput("rate", "Interest rate", value = 0.05, min = 0, max = 1, step = 0.01),
                                        numericInput("nper", "Number of periods", value = 5, min = 1, max = , step = 1),
-                                       numericInput("pmt", "Amount", value = 100, min = 0, max = , step = 1),
+                                       numericInput("pmt", "Amount", value = NA, min = 0, max = , step = 1),
 
                                        # Create a button to calculate the present value and accumulated value
 
@@ -28,13 +28,12 @@ sub_ui=function(output_label){tags$div(selectInput(inputId = "payable", label = 
                                                 # tags$pre(" ",style="background-color:#C7EA46;border:none;margin-right:-6px"),
                                                 tags$i(class = "fa-solid fa-rupee-sign fa-beat ",style="margin-top:5px;"),
                                                 style="margin-top:20px;display:none;")
+                                       
                                        #verbatimTextOutput(value)
 
 
 )}
 server=function(input,output,session){
-  
- 
   
   output$dynamic_ui= renderUI({
 
@@ -55,17 +54,17 @@ server=function(input,output,session){
 
   #Calculate the present value and accumulated value when the user clicks the button
   observeEvent(input$calculate, {
-    result =reactive({
+    ans =reactive({
       req(input$rate,input$nper,input$pmt)
       switch(input$radio,
                      "1" = switch(input$payable,
-                                    "Yearly" =  pv(r = input$rate, n = input$nper, pmt = input$pmt, fv=0),
-                                    "Half Yearly" =  pv(r = input$rate/2, n = 2*input$nper, pmt = input$pmt, fv = 0),
-                                    "Monthly" =  pv(r = input$rate/12, n = 12*input$nper, pmt = input$pmt, fv = 0)),
+                                    "Yearly" =  pv(r = input$rate, n = input$nper, pmt =0 , fv=input$pmt),
+                                    "Half Yearly" =  pv(r = input$rate/2, n = 2*input$nper, pmt = 0, fv = input$pmt),
+                                    "Monthly" =  pv(r = input$rate/12, n = 12*input$nper, pmt =0, fv =input$pmt)),
                      "2" = switch(input$payable,
-                                "Yearly" =  fv(r = input$rate, n = input$nper, pmt = input$pmt, pv=0),
-                                "Half Yearly" =  fv(r = input$rate/2, n = 2*input$nper, pmt = input$pmt, pv = 0),
-                                "Monthly" =  fv(r = input$rate/12, n = 12*input$nper, pmt = input$pmt, pv = 0)),
+                                "Yearly" =  fv(r = input$rate, n = input$nper, pmt = 0, pv=input$pmt),
+                                "Half Yearly" =  fv(r = input$rate/2, n = 2*input$nper, pmt = 0, pv =input$pmt),
+                                "Monthly" =  fv(r = input$rate/12, n = 12*input$nper, pmt = 0, pv = input$pmt)),
                      "3" = switch(input$time,
                                 "End"=switch(input$payable,
                                              "Yearly" =  pmt(r = nominal_rate(input$rate,12)/12, n = 12*input$nper, pv = input$pmt, fv=0,type=0),
@@ -81,7 +80,7 @@ server=function(input,output,session){
 
       output$result <- renderText({
       
-        -round(result(), 2)})
+        -round(ans(), 2)})
       shinyjs::show("output_div")
       shinyjs::addClass(selector = "#output_div", class = "myClass")
 

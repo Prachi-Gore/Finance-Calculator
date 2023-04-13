@@ -5,9 +5,9 @@ account: prachigore29
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 8754848
-bundleId: 7058509
+bundleId: 7083689
 url: https://prachigore29.shinyapps.io/Finance_Calculator/
-when: 1680805963.25166
-lastSyncTime: 1680805963.25166
+when: 1681373324.94245
+lastSyncTime: 1681373324.94245
 asMultiple: TRUE
 asStatic: FALSE
