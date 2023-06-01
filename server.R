@@ -11,7 +11,7 @@ effective_rate = function(nom_rate, m) {
 }
 sub_ui=function(output_label){tags$div(selectInput(inputId = "payable", label = "Interest Payable : ", choices = c("Yearly", "Half Yearly", "Monthly")),
                                        numericInput("rate", "Interest rate", value = 0.05, min = 0, max = 1, step = 0.01),
-                                       numericInput("nper", "Number of periods", value = 5, min = 1, max = , step = 1),
+                                       numericInput("nper", "Number of periods(in yrs)", value = 5, min = 1, max = , step = 1),
                                        numericInput("pmt", "Amount", value = NA, min = 0, max = , step = 1),
 
                                        # Create a button to calculate the present value and accumulated value
